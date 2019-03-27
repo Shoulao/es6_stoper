@@ -1,45 +1,76 @@
 <!DOCTYPE html>
 <html class="no-js">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Timer!</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Montserrat|Press+Start+2P" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-</head>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Montserrat|Press+Start+2P"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+  </head>
 
-<body>
+  <body>
     <section class="stopwatch-container">
-        <div class="stopwatch-body">
-            <nav class="controls">
-                <div class="button action-button" id="start">Start</div>
-                <div class="button action-button" id="stop">Stop</div>
-                <div class="button" id="reset">Reset</div>
-                <div class="button" id="nRecord">New Rec.</div>
-                <div class="button" id="resetRecords">Reset List</div>
-            </nav>
-            <div class="stopwatch-container">
-                <div class="stopwatch"></div>
-            </div>
-            <div class="strips-controls">
-                <div class="strip"></div>
-                <div class="strip"></div>
-                <div class="strip"></div>
-            </div>
+      <div class="stopwatch-body">
+        <nav class="controls">
+          <div class="button action-button" id="start">Start</div>
+          <div class="button action-button" id="stop">Stop</div>
+          <div class="button" id="reset">Reset</div>
+          <div class="button" id="nRecord">New Rec.</div>
+          <div class="button" id="resetRecords">Reset List</div>
+        </nav>
+
+        <div class="stopwatch-box">
+          <div class="logo-box">
+            <h2 class="stopwatch-logo">stopwatch</h2>
+            <h2 class="stopwatch-logo2">stopwatch</h2>
+          </div>
+
+          <div class="stopwatch"></div>
+          <div class="stopwatch-hole">
+            <div class="stopwatch-inner-hole"></div>
+          </div>
         </div>
-        <div class="record-list-container">
-            <h4>Record List</h4>
-            <ul class="results">
-                
-            </ul>
+        <div class="strips-controls">
+          <div class="strip">
+            <div class="inner-strip"></div>
+            <div class="inner-strip"></div>
+            <div class="inner-strip"></div>
+          </div>
+          <div class="strip">
+            <div class="inner-strip"></div>
+            <div class="inner-strip"></div>
+            <div class="inner-strip"></div>
+          </div>
+          <div class="strip">
+            <div class="inner-strip"></div>
+            <div class="inner-strip"></div>
+            <div class="inner-strip"></div>
+          </div>
         </div>
 
+        <div class="handle-spot">
+          <div class="handle-strip"></div>
+          <div class="handle-strip"></div>
+          <div class="handle-strip"></div>
+          <div class="handle-strip"></div>
+          <div class="handle-strip"></div>
+          <div class="handle-strip"></div>
+          <div class="handle-strip"></div>
+          <div class="handle-strip"></div>
+        </div>
+      </div>
+
+      <div class="record-list-container">
+        <h4>Record List</h4>
+        <ul class="results"></ul>
+      </div>
     </section>
 
     <script type="text/javascript" src="js/script-compiled.js"></script>
-</body>
-
+  </body>
 </html>

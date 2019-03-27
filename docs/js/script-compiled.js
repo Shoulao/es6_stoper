@@ -22,6 +22,9 @@ var Stopwatch = function () {
                 seconds: 0,
                 miliseconds: 0
             };
+            this.print();
+            document.getElementById('start').classList.remove('active');
+            document.getElementById('stop').classList.remove('active');
         }
     }, {
         key: 'print',
@@ -44,6 +47,9 @@ var Stopwatch = function () {
                     return _this.step();
                 }, 10);
             }
+
+            document.getElementById('start').classList.add('active');
+            document.getElementById('stop').classList.remove('active');
         }
     }, {
         key: 'step',
@@ -70,6 +76,28 @@ var Stopwatch = function () {
         value: function stop() {
             this.running = false;
             clearInterval(this.watch);
+            document.getElementById('stop').classList.add('active');
+            document.getElementById('start').classList.remove('active');
+        }
+    }, {
+        key: 'restart',
+        value: function restart() {
+            this.reset();
+            this.print();
+        }
+    }, {
+        key: 'addCheckpoint',
+        value: function addCheckpoint() {
+            if (this.running) {
+                var currentCheckpoint = this.display.innerText;
+                var resultList = document.querySelector('.results');
+                resultList.insertAdjacentHTML('beforeend', '<li class="record">' + currentCheckpoint + '</li>');
+            }
+        }
+    }, {
+        key: 'resetRecordList',
+        value: function resetRecordList() {
+            document.querySelector('.results').innerHTML = '';
         }
     }]);
 
@@ -99,4 +127,14 @@ stopButton.addEventListener('click', function () {
 var resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', function () {
     return stopwatch.reset();
+});
+
+var newRecordButton = document.getElementById('nRecord');
+newRecordButton.addEventListener('click', function () {
+    return stopwatch.addCheckpoint();
+});
+
+var resetRecordButton = document.getElementById('resetRecords');
+resetRecordButton.addEventListener('click', function () {
+    return stopwatch.resetRecordList();
 });

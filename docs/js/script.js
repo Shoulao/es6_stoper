@@ -12,6 +12,9 @@ class Stopwatch {
             seconds: 0,
             miliseconds: 0
         };
+        this.print();
+        document.getElementById('start').classList.remove('active');
+        document.getElementById('stop').classList.remove('active');
     }
 
     print() {
@@ -27,6 +30,9 @@ class Stopwatch {
             this.running = true;
             this.watch - setInterval(() => this.step(), 10);
         }
+
+        document.getElementById('start').classList.add('active');
+        document.getElementById('stop').classList.remove('active');
     }
 
     step() {
@@ -50,6 +56,25 @@ class Stopwatch {
     stop() {
         this.running = false;
         clearInterval(this.watch);
+        document.getElementById('stop').classList.add('active');
+        document.getElementById('start').classList.remove('active');
+    }
+
+    restart() {
+        this.reset();
+        this.print();
+    }
+
+    addCheckpoint() {
+        if(this.running) {
+            let currentCheckpoint = this.display.innerText;
+            let resultList = document.querySelector('.results');
+            resultList.insertAdjacentHTML('beforeend', `<li class="record">${currentCheckpoint}</li>`); 
+        }
+    }
+
+    resetRecordList() {
+        document.querySelector('.results').innerHTML = '';
     }
 }
 
@@ -69,5 +94,12 @@ startButton.addEventListener('click', () => stopwatch.start());
 let stopButton = document.getElementById('stop');
 stopButton.addEventListener('click', () => stopwatch.stop());
 
-let resetButton = document.getElementById('reset');
+let resetButton = document.getElementById('reset');   
 resetButton.addEventListener('click', () => stopwatch.reset());
+
+let newRecordButton = document.getElementById('nRecord');
+newRecordButton.addEventListener('click', () => stopwatch.addCheckpoint());
+
+let resetRecordButton = document.getElementById('resetRecords');
+resetRecordButton.addEventListener('click', () => stopwatch.resetRecordList());
+
