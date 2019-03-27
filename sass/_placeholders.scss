@@ -1,0 +1,53 @@
+@mixin transform($property) {
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
+}
+
+%boxShadowHandleOutline {
+    -webkit-box-shadow: -5px -6px 4px -6px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: -5px -6px 4px -6px rgba(0, 0, 0, 0.68);
+    box-shadow: -5px -6px 4px -6px rgba(0, 0, 0, 0.68);
+}
+
+%boxShadowStopwatchHole {
+    -webkit-box-shadow: inset 2px -11px 4px -27px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 2px -11px 4px -27px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 2px -11px 4px -27px rgba(0, 0, 0, 0.75);
+}
+
+%boxShadowStopwatchInnerHole {
+    -webkit-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.75);
+}
+
+%boxShadowInset {
+    -webkit-box-shadow: inset 0px -8px 47px -14px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 0px -8px 47px -14px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 0px -8px 47px -14px rgba(0, 0, 0, 0.75);
+}
+
+%boxShadowInsetLogo {
+    -webkit-box-shadow: inset 2px 4px -31px 18px rgba(0, 0, 0, 0.184);
+    -moz-box-shadow: inset 2px 4px -31px 18px rgba(0, 0, 0, 0.184);
+    box-shadow: inset 2px 4px -31px 18px rgba(0, 0, 0, 0.184);
+}
+
+%boxShadowInsetHandle {
+    -webkit-box-shadow: inset 0px -8px 42px -14px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 0px -8px 27px -14px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 0px -8px 27px -14px rgba(0, 0, 0, 0.75);
+}
+
+%boxShadowOutline {
+    -webkit-box-shadow: 0px 9px 14px -5px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: 0px 9px 14px -5px rgba(0, 0, 0, 0.68);
+    box-shadow: 0px 9px 14px -5px rgba(0, 0, 0, 0.68);
+}
+
+%boxShadowStripsOutline {
+    -webkit-box-shadow: -3px 2px 2px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -3px 2px 2px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: -3px 2px 2px -1px rgba(0, 0, 0, 0.75);
+}

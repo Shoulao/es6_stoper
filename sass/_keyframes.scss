@@ -1,0 +1,15 @@
+@keyframes showReaction {
+    20% {
+        transform: scale(1.4);
+        opacity: 1;
+    }
+
+    25% {
+        transform: scale(0.9);
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

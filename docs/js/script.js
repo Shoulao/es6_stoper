@@ -1,105 +1,109 @@
 class Stopwatch {
-    constructor(display) {
-        this.running = false;
-        this.display = display;
-        this.reset();
-        this.print(this.times);
+  constructor(display) {
+    this.running = false;
+    this.display = display;
+    this.reset();
+    this.print(this.times);
+  }
+
+  reset() {
+    this.times = {
+      minutes: 0,
+      seconds: 0,
+      miliseconds: 0
+    };
+    this.print();
+    document.getElementById("start").classList.remove("active");
+    document.getElementById("stop").classList.remove("active");
+  }
+
+  print() {
+    this.display.innerText = this.format(this.times);
+  }
+
+  format(times) {
+    return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(
+      Math.floor(times.miliseconds)
+    )}`;
+  }
+
+  start() {
+    if (!this.running) {
+      this.running = true;
+      this.watch - setInterval(() => this.step(), 10);
     }
 
-    reset() {
-        this.times = {
-            minutes: 0,
-            seconds: 0,
-            miliseconds: 0
-        };
-        this.print();
-        document.getElementById('start').classList.remove('active');
-        document.getElementById('stop').classList.remove('active');
-    }
+    document.getElementById("start").classList.add("active");
+    document.getElementById("stop").classList.remove("active");
+  }
 
-    print() {
-        this.display.innerText = this.format(this.times);
-    }
+  step() {
+    if (!this.running) return;
+    this.calculate();
+    this.print();
+  }
 
-    format(times) {
-        return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`;
+  calculate() {
+    this.times.miliseconds += 1;
+    if (this.times.miliseconds >= 100) {
+      this.times.seconds += 1;
+      this.times.miliseconds = 0;
     }
-
-    start() {
-        if(!this.running) {
-            this.running = true;
-            this.watch - setInterval(() => this.step(), 10);
-        }
-
-        document.getElementById('start').classList.add('active');
-        document.getElementById('stop').classList.remove('active');
+    if (this.times.seconds >= 60) {
+      this.times.minutes += 1;
+      this.times.seconds = 0;
     }
+  }
 
-    step() {
-        if (!this.running) return;
-        this.calculate();
-        this.print();
-    }
+  stop() {
+    this.running = false;
+    clearInterval(this.watch);
+    document.getElementById("stop").classList.add("active");
+    document.getElementById("start").classList.remove("active");
+  }
 
-    calculate() {
-        this.times.miliseconds += 1;
-        if (this.times.miliseconds >= 100) {
-            this.times.seconds += 1;
-            this.times.miliseconds = 0;
-        }
-        if (this.times.seconds >= 60) {
-            this.times.minutes += 1;
-            this.times.seconds = 0;
-        }
-    }
+  restart() {
+    this.reset();
+    this.print();
+  }
 
-    stop() {
-        this.running = false;
-        clearInterval(this.watch);
-        document.getElementById('stop').classList.add('active');
-        document.getElementById('start').classList.remove('active');
+  addCheckpoint() {
+    if (this.running) {
+      let currentCheckpoint = this.display.innerText;
+      let resultList = document.querySelector(".results");
+      resultList.insertAdjacentHTML(
+        "beforeend",
+        `<li class="record">${currentCheckpoint}</li>`
+      );
     }
+  }
 
-    restart() {
-        this.reset();
-        this.print();
-    }
-
-    addCheckpoint() {
-        if(this.running) {
-            let currentCheckpoint = this.display.innerText;
-            let resultList = document.querySelector('.results');
-            resultList.insertAdjacentHTML('beforeend', `<li class="record">${currentCheckpoint}</li>`); 
-        }
-    }
-
-    resetRecordList() {
-        document.querySelector('.results').innerHTML = '';
-    }
+  resetRecordList() {
+    document.querySelector(".results").innerHTML = "";
+  }
 }
 
 function pad0(value) {
-    let result = value.toString();
-    if (result.length < 2) {
-        result = '0' + result;
-    }
-    return result;
+  let result = value.toString();
+  if (result.length < 2) {
+    result = "0" + result;
+  }
+  return result;
 }
 
-const stopwatch = new Stopwatch(document.querySelector('.stopwatch'));
+const stopwatch = new Stopwatch(document.querySelector(".stopwatch"));
 
-let startButton = document.getElementById('start');
-startButton.addEventListener('click', () => stopwatch.start());
+let startButton = document.getElementById("start");
+startButton.addEventListener("click", () => stopwatch.start());
 
-let stopButton = document.getElementById('stop');
-stopButton.addEventListener('click', () => stopwatch.stop());
+let stopButton = document.getElementById("stop");
+stopButton.addEventListener("click", () => stopwatch.stop());
 
-let resetButton = document.getElementById('reset');   
-resetButton.addEventListener('click', () => stopwatch.reset());
+let resetButton = document.getElementById("reset");
+resetButton.addEventListener("click", () => stopwatch.reset());
 
-let newRecordButton = document.getElementById('nRecord');
-newRecordButton.addEventListener('click', () => stopwatch.addCheckpoint());
+let newRecordButton = document.getElementById("nRecord");
+newRecordButton.addEventListener("click", () => stopwatch.addCheckpoint());
 
-let resetRecordButton = document.getElementById('resetRecords');
-resetRecordButton.addEventListener('click', () => stopwatch.resetRecordList());
-
+let resetRecordButton = document.getElementById("resetRecords");
+resetRecordButton.addEventListener("click", () => stopwatch.resetRecordList());
