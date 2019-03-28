@@ -42,8 +42,9 @@ var Stopwatch = function () {
       var _this = this;
 
       if (!this.running) {
+        this.intervalNum = 10;
         this.running = true;
-        this.watch - setInterval(function () {
+        this.watch = setInterval(function () {
           return _this.step();
         }, 10);
       }

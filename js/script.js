@@ -29,8 +29,9 @@ class Stopwatch {
 
   start() {
     if (!this.running) {
+      this.intervalNum = 10;
       this.running = true;
-      this.watch - setInterval(() => this.step(), 10);
+      this.watch = setInterval(() => this.step(), 10);
     }
 
     document.getElementById("start").classList.add("active");
